@@ -1,4 +1,5 @@
 import 'package:shoping_list_app/models/category.dart';
+// import 'package:shopping_list/models/category.dart';
 
 class GroceryItem {
   const GroceryItem({
@@ -7,6 +8,7 @@ class GroceryItem {
     required this.quantity,
     required this.category,
   });
+
   final String id;
   final String name;
   final int quantity;

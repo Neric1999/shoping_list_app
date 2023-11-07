@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:shoping_list_app/models/category.dart';
 
 const categories = {
