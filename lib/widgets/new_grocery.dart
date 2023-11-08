@@ -11,6 +11,12 @@ class NewGroceryItem extends StatefulWidget {
 }
 
 class _NewGroceryItemState extends State<NewGroceryItem> {
+  final _formKey = GlobalKey<FormState>();
+
+  void _saveItem() {
+    _formKey.currentState!.validate();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +24,7 @@ class _NewGroceryItemState extends State<NewGroceryItem> {
         title: const Text('Add new grocery'),
       ),
       body: Form(
+        key: _formKey,
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(
@@ -46,6 +53,7 @@ class _NewGroceryItemState extends State<NewGroceryItem> {
                         labelText: 'Quantity',
                       ),
                       initialValue: '1',
+                      keyboardType: TextInputType.number,
                       validator: (value) {
                         if (value == null ||
                             value.isEmpty ||
@@ -93,12 +101,14 @@ class _NewGroceryItemState extends State<NewGroceryItem> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _formKey.currentState!.reset();
+                    },
                     child: const Text('Reset'),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
-                    child: const Text('Add item'),
+                    onPressed: _saveItem,
+                    child: const Text('Save item'),
                   ),
                 ],
               )
